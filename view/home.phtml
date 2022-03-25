@@ -1,0 +1,55 @@
+<div class="search_part">
+    <input type="text">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+</div>
+
+<div class="for_you part_1">
+    <p>Thé</p>
+    <div class="slider_article">
+        <?php foreach ($tea as $t) : ?>
+            <a href="index.php?page=product&amp;id=<?= $t['id'] ?>">
+                <div class="item">
+                    <img src="view/img/tea.jpg" alt="">
+                    <p><?= $t['name'] ?></p>
+                </div>
+            </a>
+        <?php endforeach; ?>
+    </div>
+    <p>Café</p>
+    <div class="slider_article">
+        <?php foreach ($cofee as $c) : ?>
+            <a href="index.php?page=product&amp;id=<?= $c['id'] ?>">
+                <div class="item">
+                    <img src="view/img/cofee3.jpg" alt="">
+                    <p><?= $c['name'] ?></p>
+                </div>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</div>
+<div class="part_2">
+    <p>Vedette</p>
+    <div class="article_star">
+        <a href="">
+            <div class="item"></div>
+        </a>
+    </div>
+</div>
+<div class="part_3">
+    <p>Nouveautés</p>
+    <div class="article_new">
+        <a href="">
+            <div class="item"></div>
+        </a>
+        <a href="">
+            <div class="item"></div>
+        </a> <a href="">
+            <div class="item"></div>
+        </a> <a href="">
+            <div class="item"></div>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) : ?>
+    <?php if ($_GET['page'] == "inscription") {
+        header("location:index.php?page=home");
+    } ?>
+<?php else : ?>
+    <div class="inscription_part">
+        <input type="email" id="email_creation" placeholder="email">
+        <input type="password" id="password_creation" placeholder="password">
+        <button id="create_account_button">Je m'inscrit</button>
+    </div>
+    <p class="info_message"></p>
+<?php endif; ?>

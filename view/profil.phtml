@@ -1,0 +1,12 @@
+    <div class="profil_card">
+        <div class="profil_card_picture">
+            <img src="view/img/pp.png" alt="photo">
+        </div>
+        <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) : ?>
+            <div class="profil_card_info">
+                <p><?= $_SESSION['user'] ?></p>
+            </div>
+        <?php else : ?>
+
+        <?php endif; ?>
+    </div>

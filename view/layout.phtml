@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="view/css/style.css">
+    <script src="view/js/jquery.js"></script>
+    <title>Titre</title>
+</head>
+
+<body>
+    <nav>
+        <h1><a href="index.php?page=home">S!ore</a></h1>
+        <svg class="menu_hamburger_button" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="6" y1="6" x2="21" y2="6"></line>
+            <line x1="9" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <div class="nav_content">
+            <ul>
+                <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) : ?>
+                    <a href="index.php?page=home">
+                        <li>Acceuil</li>
+                    </a>
+                    <a href="index.php?page=profil&amp;id=<?= $_SESSION['id'] ?>">
+                        <li>Mon profil</li>
+                    </a>
+                    <a href="index.php?page=destroy_session">
+                        <li>Déconnexion</li>
+                    </a>
+                <?php else : ?>
+                    <li class="open_connexion_form">Connexion</li>
+                    <a href="index.php?page=inscription">
+                        <li>Inscription</li>
+                    </a>
+                <?php endif; ?>
+                <li class="close_nav_content_button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="connexion_part">
+            <div class="form">
+                <p>Identifiez Vous</p>
+                <input type="email" id="email_connexion">
+                <input type="password" id="password_connexion">
+                <div class="action_connexion_form">
+                    <button id="connect_user_button">Connexion</button>
+                    <svg class="close_connexion_part" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+        <div class="result_search_input">
+            <ul></ul>
+        </div>
+        <?php include $template . ".phtml"; ?>
+    </main>
+    <script src="view/js/script.js"></script>
+    <noscript>Your browser does not support JavaScript!</noscript>
+</body>
+
+</html>
