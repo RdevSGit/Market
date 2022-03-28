@@ -42,11 +42,16 @@ nav h1 {
     border-bottom: 2px solid hsla(33, 100%, 53%, 1);
 
 }
-
 nav svg {
     color: hsla(33, 100%, 53%, 1);
     color: rgb(160, 114, 58);
     cursor: pointer;
+    align-items: right;
+}
+.nav_buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav_content {
@@ -256,7 +261,7 @@ nav svg {
     font-size: .8em;
     text-transform: capitalize;
     text-align: center;
-    z-index: -1;
+    z-index: 0;
 }
 
 .slider_article .item,
@@ -285,6 +290,15 @@ nav svg {
 .article_new .item {
     width: 90%;
     margin: 10px auto;
+}
+
+.error {
+    text-align: center;
+    color: hsla(33, 100%, 53%, 1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* INSCRIPTION PAGE */

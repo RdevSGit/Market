@@ -32,6 +32,9 @@ if (isset($_GET["page"])) {
         case 'destroy_session':
             $UserController->DestroySession();
             break;
+        default:
+            $ProductController->ErrorPage();
+            break;
     }
 } else {
     $ProductController->ShowHomePage();

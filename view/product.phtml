@@ -14,11 +14,21 @@
         </div>
     </div>
     <div class="product_action">
-        <button class="bookmark">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-            </svg>
-        </button>
+        <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) : ?>
+            <?php if ($bookmark == 0) : ?>
+                <button class="bookmark" data-user="<?= $_SESSION['id'] ?>" data-product="<?= $product['p_id'] ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </button>
+            <?php else : ?>
+                <button class="bookmark" data-user="<?= $_SESSION['id'] ?>" data-product="<?= $product['p_id'] ?>">
+                    <svg class="mark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </button>
+            <?php endif; ?>
+        <?php endif; ?>
         <div class="select_amount">
             <button class="less">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
@@ -34,7 +44,7 @@
             </button>
         </div>
         <button>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+            <svg class="card" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
                 <circle cx="9" cy="21" r="1"></circle>
                 <circle cx="20" cy="21" r="1"></circle>
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
@@ -55,7 +65,7 @@
             <li><a href="index.php?page=profil&amp;id=<?= $product['id_vendor'] ?>"><?= htmlspecialchars($product['vendor']) ?></a></li>
         </ul>
         <ul>
-            <li>prix</li>
+            <li>prix unitaire</li>
             <li><?= htmlspecialchars($product['price']) ?> €</li>
         </ul>
     </div>

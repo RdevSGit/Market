@@ -5,8 +5,23 @@
         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
     </svg>
 </div>
-
-<div class="for_you part_1">
+<div class="part_1">
+    <?php if (isset($_SESSION['id']) && !empty($_SESSION['id'])) : ?>
+        <?php if (isset($bookmark) && !empty($bookmark)) : ?>
+            <p>Vos articles préférés</p>
+            <div class="bookmark_part">
+                <div class="slider_article">
+                    <?php foreach ($bookmark as $mark) : ?>
+                        <a href="index.php?page=product&amp;id=<?= $mark['p_id'] ?>">
+                            <div class="item">
+                            <p><?= $mark['name'] ?></p>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
     <p>Thé</p>
     <div class="slider_article">
         <?php foreach ($tea as $t) : ?>

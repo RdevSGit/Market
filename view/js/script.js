@@ -1,4 +1,5 @@
 "use strict";
+
 function openCloseNavigationMobile() {
   $(".nav_content").slideToggle("");
 }
@@ -52,7 +53,15 @@ function connectUser() {
 }
 
 function addMore() {
+  $(this).css({ color: "hsla(33, 100%, 53%, 1)", transition: "all 0.1" });
+  setTimeout(function () {
+    $(".more").css({
+      transition: "all .1s",
+      color: "#000",
+    });
+  }, 200);
   const FIRSTPRICE = parseInt($("#updated_price").attr("data"));
+
   if ($(".amount").val() < 10) {
     let input = $(".amount");
     let val = parseInt(input.val(), 10);
@@ -62,6 +71,13 @@ function addMore() {
 }
 
 function less() {
+  $(this).css({ color: "hsla(33, 100%, 53%, 1)", transition: "all 0.1" });
+  setTimeout(function () {
+    $(".less").css({
+      transition: "all .1s",
+      color: "#000",
+    });
+  }, 200);
   const FIRSTPRICE = parseInt($("#updated_price").attr("data"));
   if ($(".amount").val() > 1) {
     let input = $(".amount");
@@ -72,7 +88,19 @@ function less() {
 }
 
 function addToBookmark() {
+  let user_id = $(this).attr("data-user");
+  let product_id = $(this).attr("data-product");
+
   $(this).find("svg").toggleClass("mark");
+
+  $.ajax({
+    type: "POST",
+    url: "view/php/ajax/add_to_bookmark.php",
+    data: {
+      user_id: user_id,
+      product_id: product_id,
+    },
+  });
 }
 
 function searchInput() {
@@ -96,6 +124,22 @@ function searchInput() {
   });
 }
 
+function addToCard() {
+  $(this).css({
+    transition: "all .2s",
+    transform: "rotate(-20deg)",
+    stroke : "hsla(33, 100%, 53%, 1)"
+  });
+  setTimeout(function () {
+    $(".card").css({
+      transition: "all .2s",
+      transform: "rotate(0deg)",
+      stroke : "#000",
+    });
+  }, 200);
+}
+
+
 $(function () {
   $(".menu_hamburger_button").on("click", openCloseNavigationMobile);
   $(".close_nav_content_button").on("click", openCloseNavigationMobile);
@@ -107,4 +151,5 @@ $(function () {
   $(".less").on("click", less);
   $(".bookmark").on("click", addToBookmark);
   $(".search_part input").keyup(searchInput);
+  $(".card").on("click", addToCard);
 });
