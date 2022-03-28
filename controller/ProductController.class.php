@@ -19,6 +19,7 @@ class ProductController
             if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
                 $user = $_SESSION['id'];
                 $bookmark = $this->productmodel->CheckBookmark($user, $id);
+                $fav_book = $this->productmodel->CheckFav($id);
             }
             $template = "product";
         } else {

@@ -17,13 +17,14 @@ function closeConnexionPart() {
 function createAccount() {
   const EMAIL = $("#email_creation").val();
   const PASSWORD = $("#password_creation").val();
-
+  const PSEUDO = $("#pseudo_user").val();
   $.ajax({
     type: "POST",
     url: "view/php/ajax/inscription.php",
     data: {
       email: EMAIL,
       password: PASSWORD,
+      pseudo : PSEUDO
     },
     success: function (data) {
       $(".info_message").text(data);
@@ -99,7 +100,9 @@ function addToBookmark() {
     data: {
       user_id: user_id,
       product_id: product_id,
-    },
+    },success : function(data){
+      $(".bookmark p").text(data)
+    }
   });
 }
 

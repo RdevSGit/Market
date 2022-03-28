@@ -13,7 +13,7 @@ class ProductModel
 
     public function ListOfTea()
     {
-        $query = $this->bdd->prepare("SELECT * FROM products WHERE type = 'tea' ORDER BY RAND()");
+        $query = $this->bdd->prepare("SELECT * FROM products JOIN bookmark on products.id = bookmark.product_id_bookmark WHERE type = 'tea'");
         $query->execute([]);
         $tea = $query->fetchAll();
         return $tea;
@@ -21,7 +21,7 @@ class ProductModel
 
     public function ListOfCofee()
     {
-        $query = $this->bdd->prepare("SELECT * FROM products WHERE type = 'cofee' ORDER BY RAND()");
+        $query = $this->bdd->prepare("SELECT * FROM products WHERE type = 'cofee'");
         $query->execute([]);
         $cofee = $query->fetchAll();
         return $cofee;
@@ -41,6 +41,13 @@ class ProductModel
         $query->execute([$user, $id]);
         $bookmark = $query->rowCount();
         return $bookmark;
+    }
+
+    public function CheckFav($id){
+        $query = $this->bdd->prepare("SELECT * FROM products JOIN bookmark on products.id = bookmark.product_id_bookmark WHERE product_id_bookmark =? ");
+        $query->execute([$id]);
+        $fav_book = $query->rowCount();
+        return $fav_book;
     }
 
     public function ListFav($id){

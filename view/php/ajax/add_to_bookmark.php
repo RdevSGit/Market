@@ -14,7 +14,16 @@ $check_result = $check->rowCount();
 if ($check_result == 0) {
     $add_to_bookmark = $bdd->prepare("INSERT INTO bookmark (user_id_bookmark , product_id_bookmark) VALUES (?,?)");
     $add_to_bookmark->execute([$user_id, $product_id]);
+    $query = $bdd->prepare("SELECT * FROM bookmark WHERE product_id_bookmark = ? ");
+    $query->execute([$product_id]);
+    $nbr = $query->rowCount();
+    echo $nbr;
+
 } else {
     $remove_from_bookmark = $bdd->prepare("DELETE FROM bookmark WHERE user_id_bookmark = ? AND product_id_bookmark = ?");
     $remove_from_bookmark->execute([$user_id, $product_id]);
+    $query = $bdd->prepare("SELECT * FROM bookmark WHERE product_id_bookmark = ? ");
+    $query->execute([$product_id]);
+    $nbr = $query->rowCount();
+    echo $nbr;
 }
