@@ -2,7 +2,6 @@
 
 class ProductModel
 {
-
     private $bdd;
 
     public function __construct()
@@ -13,7 +12,7 @@ class ProductModel
 
     public function ListOfTea()
     {
-        $query = $this->bdd->prepare("SELECT * FROM products JOIN bookmark on products.id = bookmark.product_id_bookmark WHERE type = 'tea'");
+        $query = $this->bdd->prepare("SELECT * FROM products WHERE type = 'tea'");
         $query->execute([]);
         $tea = $query->fetchAll();
         return $tea;
@@ -29,13 +28,13 @@ class ProductModel
 
     public function ProductInfo($id)
     {
-        $query = $this->bdd->prepare("SELECT *, products.id as p_id FROM products JOIN users on products.id_vendor = users.id WHERE products.id = ?");
+        $query = $this->bdd->prepare("SELECT * , products.id as p_id FROM products JOIN users on products.id_vendor = users.id WHERE products.id = ?");
         $query->execute([$id]);
         $product = $query->fetch();
         return $product;
     }
 
-    public function CheckBookmark($user , $id)
+    public function CheckBookmark($user, $id)
     {
         $query = $this->bdd->prepare("SELECT * FROM bookmark WHERE user_id_bookmark = ? AND product_id_bookmark = ?");
         $query->execute([$user, $id]);
@@ -43,17 +42,19 @@ class ProductModel
         return $bookmark;
     }
 
-    public function CheckFav($id){
+    public function CheckFav($id)
+    {
         $query = $this->bdd->prepare("SELECT * FROM products JOIN bookmark on products.id = bookmark.product_id_bookmark WHERE product_id_bookmark =? ");
         $query->execute([$id]);
         $fav_book = $query->rowCount();
         return $fav_book;
     }
 
-    public function ListFav($id){
+    public function ListFav($id)
+    {
         $query = $this->bdd->prepare("SELECT *, products.id as p_id FROM products JOIN bookmark on products.id = bookmark.product_id_bookmark WHERE user_id_bookmark =? ");
         $query->execute([$id]);
         $bookmark = $query->fetchAll();
         return $bookmark;
-    }   
+    }
 }

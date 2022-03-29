@@ -17,14 +17,18 @@ class UserController
         $template = "inscription";
         include "view/layout.phtml";
     }
-    public function ProfilPage(){
+
+    public function ProfilPage()
+    {
+        $id = $_GET['id'];
+        $product_user = $this->usermodel->UserProduct($id);
         $template = "profil";
         include "view/layout.phtml";
     }
+
     public function DestroySession()
     {
         session_destroy();
         header("location:index.php?page=home");
     }
-
 }

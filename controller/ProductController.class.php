@@ -28,7 +28,6 @@ class ProductController
         include 'view/layout.phtml';
     }
 
-
     public function ShowHomePage()
     {
 

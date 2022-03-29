@@ -142,7 +142,6 @@ function addToCard() {
   }, 200);
 }
 
-
 $(function () {
   $(".menu_hamburger_button").on("click", openCloseNavigationMobile);
   $(".close_nav_content_button").on("click", openCloseNavigationMobile);

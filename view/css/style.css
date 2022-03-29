@@ -42,13 +42,15 @@ nav h1 {
     border-bottom: 2px solid hsla(33, 100%, 53%, 1);
 
 }
+
 nav svg {
     color: hsla(33, 100%, 53%, 1);
     color: rgb(160, 114, 58);
     cursor: pointer;
     align-items: right;
 }
-.nav_buttons{
+
+.nav_buttons {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -93,7 +95,7 @@ nav svg {
 }
 
 .search_part {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -267,7 +269,7 @@ nav svg {
 
 .slider_article .item,
 .article_star .item,
-.article_new .item {
+.article_grid .item {
     overflow: hidden;
     height: 130px;
     background: none;
@@ -283,12 +285,12 @@ nav svg {
     width: 100%;
 }
 
-.article_new {
+.article_grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.article_new .item {
+.article_grid .item {
     width: 90%;
     margin: 10px auto;
 }
@@ -347,7 +349,7 @@ nav svg {
 /* PROFIL PAGE */
 
 .profil_card {
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
     height: 100px;
     border-radius: 20px;
@@ -376,6 +378,11 @@ nav svg {
     word-wrap: break-word;
 }
 
+.profil_items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
 /* PRODUCT PAGE */
 
 .product_card {
@@ -383,7 +390,7 @@ nav svg {
     color: #fff;
     display: flex;
     flex-flow: column;
-    width: 90%;
+    width: 95%;
     margin: 0 auto;
 }
 
